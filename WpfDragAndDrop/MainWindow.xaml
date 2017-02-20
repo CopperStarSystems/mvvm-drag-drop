@@ -1,0 +1,33 @@
+﻿<Window x:Class="WpfDragAndDrop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfDragAndDrop"
+        xmlns:behaviors="clr-namespace:WpfDragAndDrop.Behaviors"
+        mc:Ignorable="d"
+        Title="MainWindow">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.2*" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0">
+            <StackPanel.Resources>
+                <Style TargetType="{x:Type Rectangle}">
+                    <Setter Property="Margin" Value="10" />
+                    <Setter Property="Height" Value="60" />
+                    <Setter Property="behaviors:DragSourceBehavior.DragSource"
+                            Value="{Binding RelativeSource={RelativeSource Self}}" />
+                </Style>
+            </StackPanel.Resources>
+            <Rectangle Fill="Red" />
+            <Rectangle Fill="Blue" />
+            <Rectangle Fill="Green" />
+            <Rectangle Fill="Yellow" />
+        </StackPanel>
+        <Canvas Grid.Column="1" Background="Lavender" AllowDrop="True"
+                behaviors:DropTargetBehavior.DropTarget="{Binding RelativeSource={RelativeSource Self}}" />
+    </Grid>
+</Window>
