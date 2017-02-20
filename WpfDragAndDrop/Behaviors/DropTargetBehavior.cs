@@ -6,6 +6,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Shapes;
+using Microsoft.Expression.Interactivity.Layout;
 using WpfDragAndDrop.Model;
 
 namespace WpfDragAndDrop.Behaviors
@@ -60,6 +61,7 @@ namespace WpfDragAndDrop.Behaviors
                 var child = CreateRectangleFromData(data);
                 SetChildPosition(e, canvas, child);
                 AddChildToCanvas(canvas, child);
+                DragMoveBehavior.SetTarget(child, child);
             }
         }
 
